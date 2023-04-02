@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "app.terraform.io/tnx-journey-to-cloud/vpc/aws"
-  version = "1.1.5"
+  version = "1.1.6"
 
   for_each = var.vpc
 

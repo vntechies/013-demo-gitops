@@ -1,10 +1,10 @@
-name: Release
+name: checkov
 on: push
 
 jobs:
   checkov-job:
     runs-on: ubuntu-latest
-    name: Release
+    name: checkov
     steps:
       - name: Checkout repo
         uses: actions/checkout@master
