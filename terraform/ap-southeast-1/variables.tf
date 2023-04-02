@@ -1,3 +1,6 @@
+variable "region" {
+  default = "ap-southeast-1"
+}
 variable "default_tags" {
   description = "(Required) Default tag for AWS resource"
   default = {
