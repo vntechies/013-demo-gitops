@@ -11,9 +11,9 @@ variable "default_tags" {
 variable "vpc" {
   default = {
     demo-vpc = {
-      igw_config = { 
-          igw_enable = true, 
-          rtb_name = "public_rtb" 
+      igw_config = {
+        igw_enable = true,
+        rtb_name   = "public_rtb"
       }
       route_table_setting = {
         # "spokeA_rtb" = {
@@ -28,31 +28,32 @@ variable "vpc" {
       subnets = {
         public_subnet1 = {
           route_table_name = "public_rtb"
-          cidr = "10.0.1.0/24"
-          az   = "ap-southeast-1a"
+          cidr             = "10.0.1.0/24"
+          az               = "ap-southeast-1a"
           subnet_tags = {
             "public_subnet1" = "ap-southeast-1a"
-            "group" = "public_subnet"
+            "group"          = "public_subnet"
           }
         },
         public_subnet2 = {
           route_table_name = "public_rtb"
-          cidr = "10.0.2.0/24"
-          az   = "ap-southeast-1b"
+          cidr             = "10.0.2.0/24"
+          az               = "ap-southeast-1b"
           subnet_tags = {
             "public_subnet2" = "ap-southeast-1b"
-            "group" = "public_subnet"
+            "group"          = "public_subnet"
           }
         },
         public_subnet3 = {
           route_table_name = "public_rtb"
-          cidr = "10.0.3.0/24"
-          az   = "ap-southeast-1c"
+          cidr             = "10.0.3.0/24"
+          az               = "ap-southeast-1c"
           subnet_tags = {
             "public_subnet3" = "ap-southeast-1c"
-            "group" = "public_subnet"
+            "group"          = "public_subnet"
           }
         }
       }
     }
+  }
 }

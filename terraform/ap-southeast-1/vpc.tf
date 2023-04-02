@@ -9,13 +9,13 @@ module "vpc" {
   subnets        = each.value.subnets
   prefix         = local.app_env_prefix
   # peered_vpcs    = try(each.value.peered_vpcs, {})
-  endpoints = try(each.value.endpoints,[])
+  endpoints = try(each.value.endpoints, [])
   tags = {
     "kubernetes.io/cluster/${local.app_env_prefix}-eks-test" = "spoke"
   }
-  route_table_setting = try(each.value.route_table_setting,{})
-  igw_config = try(each.value.igw_config,{})
-  ngw_config = try(each.value.ngw_config,{})
+  route_table_setting = try(each.value.route_table_setting, {})
+  igw_config          = try(each.value.igw_config, {})
+  ngw_config          = try(each.value.ngw_config, {})
 }
 
 ###############################
