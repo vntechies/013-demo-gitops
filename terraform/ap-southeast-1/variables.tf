@@ -52,7 +52,7 @@ variable "vpc" {
             "public_subnet3" = "ap-southeast-1c"
             "group" = "public_subnet"
           }
+        }
       }
     }
-  }
 }
