@@ -1,0 +1,7 @@
+version: 3
+projects:
+  - name: terraform
+    dir: .
+    autoplan:
+      when_modified:
+       - "*.tf"
