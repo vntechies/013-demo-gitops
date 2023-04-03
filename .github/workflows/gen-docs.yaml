@@ -1,0 +1,29 @@
+name: Render Terraform Docs
+on: 
+  pull_request:
+    branches:    
+    - master
+    types: [closed]
+    paths:
+      - '**.tf'
+jobs:
+  render-docs:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        working-dir:
+          - terraform/ap-southeast-1/
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+        
+      - name: Render terraform docs for ${{ matrix.working-dir }}
+        if:  github.event.action == 'closed' && github.event.pull_request.merged == true
+        uses: terraform-docs/gh-actions@main
+        with:
+          working-dir: ./${{ matrix.working-dir }}
+          output-file: README.md
+          output-method: inject
+          git-push: "true"

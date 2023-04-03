@@ -1,0 +1,7 @@
+version: 3
+projects:
+  - name: demo-aws-cloudday-vn
+    dir: terraform/ap-southeast-1
+    autoplan:
+      when_modified:
+       - "*.tf"
