@@ -3,4 +3,4 @@
 version: 0.1
 
 projects:
-  - path: terraform/ap-southeast-1/
+  - path: terraform/ap-southeast-1
