@@ -11,7 +11,7 @@ jobs:
 
       - name: DEMO-AWS-CLOUDDAY-VN
         id: checkov
-        uses: bridgecrewio/checkov-action@v12.1347.0
+        uses: bridgecrewio/checkov-action@master
         with:
           directory: ./terraform/ap-southeast-1
           # file: example/tfplan.json # optional: provide the path for resource to be scanned. This will override the directory if both are provided.
