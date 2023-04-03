@@ -13,7 +13,7 @@ jobs:
       contents: read
       pull-requests: write
     env:
-      TF_ROOT: terraform/ap-southeast-1
+      TF_ROOT: ./terraform/ap-southeast-1
       # This instructs the CLI to send cost estimates to Infracost Cloud. Our SaaS product
       #   complements the open source CLI by giving teams advanced visibility and controls.
       #   The cost estimates are transmitted in JSON format and do not contain any cloud 
@@ -33,8 +33,8 @@ jobs:
       #     mkdir -p ~/.ssh
       #     echo "${{ secrets.GIT_SSH_KEY }}" | tr -d '\r' | ssh-add -
       #     ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - name: Checkout repo
-        uses: actions/checkout@master
+      # - name: Checkout repo
+      #   uses: actions/checkout@master
       - name: Setup Infracost
         uses: infracost/actions/setup@v2
         # See https://github.com/infracost/actions/tree/master/setup for other inputs
