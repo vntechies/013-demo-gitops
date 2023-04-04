@@ -1,4 +1,6 @@
 terraform {
+  # experiments = [module_variable_optional_attrs] // This only use when TF version under 1.3.0
+
   required_version = ">= 1.2.0"
   required_providers {
     aws = {
@@ -8,7 +10,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "adam-nguyen-20231402"
+    bucket = "atlantis-2023"
     key    = "hungran/terraform.tfstate"
     region = "ap-southeast-1"
   }
