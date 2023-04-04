@@ -1,0 +1,76 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: trunk-ea-linkerd-viz
+# spec:
+#   project: kind-hung-cluster-local
+#   destination:
+#     name: kind-hung-cluster-local
+#     namespace: linkerd
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#   source:
+#     repoURL: https://helm.linkerd.io/stable
+#     chart: linkerd-viz
+#     targetRevision: 30.3.4
+#     helm:
+#       version: v3
+#       values: |
+#         identityTrustAnchorsPEM: &identityTrustAnchorsPEM |
+#           -----BEGIN CERTIFICATE-----
+#           MIIB3jCCAYWgAwIBAgIRANjy/G3q2iCVDVXvFizkZ6swCgYIKoZIzj0EAwIwKTEn
+#           MCUGA1UEAxMeaWRlbnRpdHkubGlua2VyZC5jbHVzdGVyLmxvY2FsMB4XDTIwMTEy
+#           NzA2MjE1NVoXDTMwMTEyNTA2MjE1NVowKTEnMCUGA1UEAxMeaWRlbnRpdHkubGlu
+#           a2VyZC5jbHVzdGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnoVm
+#           CDt87P1I6Q5ZOln3loCmpX1JguWdmX+e2M9YmQfwtZ2mvBXcatWneSmvP4d3l1od
+#           rxMxko4cAsyr9vqeBKOBjTCBijAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0lBBYwFAYI
+#           KwYBBQUHAwEGCCsGAQUFBwMCMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFFaS
+#           96aUtjJhQ8UTx4of4VGGmOQxMCkGA1UdEQQiMCCCHmlkZW50aXR5LmxpbmtlcmQu
+#           Y2x1c3Rlci5sb2NhbDAKBggqhkjOPQQDAgNHADBEAiAcP6Fdh6jTfSofzZfdHU2o
+#           s+vvvZh2OdBeUpq8+caVhQIgbDNLyVZxU+baHGLVfpH4x0Vzp4c7+jMzCMFLR72K
+#           R0A=
+#           -----END CERTIFICATE-----
+
+#         linkerdNamespace: linkerd
+#         enablePodAntiAffinity: true
+
+#         resources: &ha_resources
+#           cpu: &ha_resources_cpu
+#             limit: 50m
+#             request: 50m
+#           memory:
+#             limit: 250Mi
+#             request: 50Mi
+
+#         # tap configuration
+#         tap:
+#           replicas: 2
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#           resources: *ha_resources
+
+#         # tap injector configuration
+#         tapInjector:
+#           replicas: 2
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#           resources: *ha_resources
+
+#         # metrics-api configuration
+#         metricsAPI:
+#           replicas: 2
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#           resources: *ha_resources
+
+#         # web configuration
+#         dashboard:
+#           replicas: 2
+#           resources: *ha_resources
+
+#         grafana:
+#           externalUrl: https://grafana.jarvis.tools
+
+#         prometheusUrl: http://trunk-ea-prometheus-kube-p-prometheus.prometheus.svc.cluster.local:9090

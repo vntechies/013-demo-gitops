@@ -1,0 +1,100 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Rollout
+# metadata:
+#   name: rollouts-demo
+#   namespace: argo-rollouts
+# spec:
+#   replicas: 5
+#   strategy:
+#     canary:
+#       canaryService: rollouts-demo-rollout-canary
+#       stableService: rollouts-demo-rollout-stable
+#       trafficRouting:
+#         smi:
+#           rootService: rollouts-demo
+#           trafficSplitName: rollouts-demo-rollout
+#       antiAffinity:
+#         preferredDuringSchedulingIgnoredDuringExecution:
+#           weight: 10
+#       steps:
+#         - setWeight: 20
+#         - pause: {}
+#         - setWeight: 40
+#         - pause: {duration: 10}
+#         - setWeight: 60
+#         - pause: {duration: 10}
+#         - setWeight: 80
+#         - pause: {duration: 10}
+#       analysis:
+#         templates:
+#           - templateName: http-response-success-rate
+#             clusterScope: true
+#         args:
+#           - name: service-name
+#             value: argo-rollouts-demo.svc.cluster.local:8080
+#           - name: stable-hash
+#             valueFrom:
+#               podTemplateHashValue: Stable
+#           - name: latest-hash
+#             valueFrom:
+#               podTemplateHashValue: Latest
+#   revisionHistoryLimit: 2
+#   selector:
+#     matchLabels:
+#       app: rollouts-demo
+#   template:
+#     metadata:
+#       labels:
+#         app: rollouts-demo
+#       annotations:
+#         linkerd.io/inject: enabled
+#     spec:
+#       containers:
+#       - name: rollouts-demo
+#         image: argoproj/rollouts-demo:blue
+#         ports:
+#         - name: http
+#           containerPort: 8080
+#           protocol: TCP
+#         resources:
+#           requests:
+#             memory: 32Mi
+#             cpu: 5m
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: ClusterAnalysisTemplate
+# metadata:
+#   name: http-response-success-rate
+#   namespace: argo-rollouts
+# spec:
+#   args:
+#     - name: service-name
+#     - name: stable-hash
+#     - name: latest-hash
+#   metrics:
+#     - name: success-rate
+#       interval: 5m
+#       initialDelay: 3m
+#       successCondition: result[0] >= 0.95
+#       failureLimit: 3
+#       provider:
+#         prometheus:
+#           address: http://prometheus-operated.prometheus:9090
+#           query: |
+#             sum(irate(response_total{direction="inbound", classification="success", rollouts_pod_template_hash="{{args.latest-hash}}"}[5m]))
+#             /
+#             sum(irate(response_total{direction="inbound", rollouts_pod_template_hash="{{args.latest-hash}}"}[5m]))
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: argo-rollouts-demo
+#   namespace: argo-rollouts 
+# spec:
+#   ports:
+#   - port: 80
+#     targetPort: http
+#     protocol: TCP
+#     name: http
+#   selector:
+#     app: rollouts-demo

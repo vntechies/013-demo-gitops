@@ -1,0 +1,89 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: trunk-ea-linkerd
+# spec:
+#   project: kind-hung-cluster-local
+#   destination:
+#     name: kind-hung-cluster-local
+#     namespace: linkerd
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#   source:
+#     repoURL: https://helm.linkerd.io/stable
+#     chart: linkerd-control-plane
+#     targetRevision: 1.9.4
+#     helm:
+#       version: v3
+#       values: |
+#         controlPlaneTracing: true
+#         identityTrustAnchorsPEM: &identityTrustAnchorsPEM |
+#           -----BEGIN CERTIFICATE-----
+#           MIIB3jCCAYWgAwIBAgIRANjy/G3q2iCVDVXvFizkZ6swCgYIKoZIzj0EAwIwKTEn
+#           MCUGA1UEAxMeaWRlbnRpdHkubGlua2VyZC5jbHVzdGVyLmxvY2FsMB4XDTIwMTEy
+#           NzA2MjE1NVoXDTMwMTEyNTA2MjE1NVowKTEnMCUGA1UEAxMeaWRlbnRpdHkubGlu
+#           a2VyZC5jbHVzdGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnoVm
+#           CDt87P1I6Q5ZOln3loCmpX1JguWdmX+e2M9YmQfwtZ2mvBXcatWneSmvP4d3l1od
+#           rxMxko4cAsyr9vqeBKOBjTCBijAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0lBBYwFAYI
+#           KwYBBQUHAwEGCCsGAQUFBwMCMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFFaS
+#           96aUtjJhQ8UTx4of4VGGmOQxMCkGA1UdEQQiMCCCHmlkZW50aXR5LmxpbmtlcmQu
+#           Y2x1c3Rlci5sb2NhbDAKBggqhkjOPQQDAgNHADBEAiAcP6Fdh6jTfSofzZfdHU2o
+#           s+vvvZh2OdBeUpq8+caVhQIgbDNLyVZxU+baHGLVfpH4x0Vzp4c7+jMzCMFLR72K
+#           R0A=
+#           -----END CERTIFICATE-----
+
+#         enablePodAntiAffinity: true
+
+#         # proxy configuration
+#         proxy:
+#           waitBeforeExitSeconds: 30
+#           cores: 1
+#           resources:
+#             cpu:
+#               limit: 250m
+#               request: 10m
+#             memory:
+#               limit: 50Mi
+#               request: 50Mi
+
+#         # controller configuration
+#         controllerReplicas: 2
+#         controllerResources: &controller_resources
+#           cpu: &controller_resources_cpu
+#             limit: 100m
+#             request: 100m
+#           memory:
+#             limit: 250Mi
+#             request: 250Mi
+#         destinationResources: *controller_resources
+
+#         # identity configuration
+#         identity:
+#           issuer:
+#             scheme: kubernetes.io/tls
+#         identityResources: *controller_resources
+
+#         # heartbeat configuration
+#         disableHeartBeat: true
+
+#         # proxy injector configuration
+#         proxyInjector:
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#         proxyInjectorResources: *controller_resources
+#         webhookFailurePolicy: Fail
+
+#         # service profile validator configuration
+#         profileValidator:
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#         spValidatorResources: *controller_resources
+
+#         # policy validator configuration
+#         policyValidator:
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#         debugContainer:
+          
