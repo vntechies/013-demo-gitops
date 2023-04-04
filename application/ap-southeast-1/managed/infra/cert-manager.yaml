@@ -6,7 +6,7 @@ spec:
   project: cloud-day-demo
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
