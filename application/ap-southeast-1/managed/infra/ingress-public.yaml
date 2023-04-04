@@ -5,7 +5,7 @@ metadata:
 spec:
   project: cloud-day-demo
   destination:
-    namespace: ingress-public
+    namespace: ingress
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
