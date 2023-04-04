@@ -64,9 +64,9 @@ spec:
             externalTrafficPolicy: Local
             annotations:
               service.beta.kubernetes.io/aws-load-balancer-type: nlb
-          metrics:
-           enabled: true
-           serviceMonitor:
-             enabled: true
+          # metrics:
+          #  enabled: true
+          #  serviceMonitor:
+          #    enabled: true
           admissionWebhooks:
             enabled: false
