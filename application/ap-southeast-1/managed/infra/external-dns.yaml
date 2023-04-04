@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+spec:
+  project: cloud-day-demo
+  destination:
+    name: cloud-day-demo
+    namespace: external-dns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: external-dns
+    targetRevision: 6.5.6
+    helm:
+      values: |
+        txtOwnerId: hungran.cloud
+
+        provider: cloudflare
+        cloudflare:
+          secretName: cloudflare
+          email: vmhung290791@gmail.com
+          proxied: false
+
+        domainFilters:
+          - hungran.cloud
+
+        sources:
+          - service
+          - ingress
+
+        metrics:
+          enabled: false
+          serviceMonitor:
+            enabled: false
