@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-cloud-day-demo-manifests
+  name: cloud-day-demo-manifests
 spec:
-  project: aws-cloud-day-demo
+  project: cloud-day-demo
   destination:
-    name: aws-cloud-day-demo
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       prune: true
