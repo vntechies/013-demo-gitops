@@ -9,11 +9,11 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   bucket = "adam-nguyen-20231402"
-  #   key    = "hungran/terraform.tfstate"
-  #   region = "ap-southeast-1"
-  # }
+  backend "s3" {
+    bucket = "adam-nguyen-20231402"
+    key    = "hungran/terraform.tfstate"
+    region = "ap-southeast-1"
+  }
 }
 
 provider "aws" {
