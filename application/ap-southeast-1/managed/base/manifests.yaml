@@ -11,7 +11,7 @@ spec:
       prune: true
       selfHeal: true
   source:
-    repoURL: git@github.com:tnx-journey-to-cloud/demo-aws-clouday-vn.git
+    repoURL: https://github.com/tnx-journey-to-cloud/demo-aws-clouday-vn.git
     targetRevision: HEAD
     path: application/ap-southeast-1/manifests
     directory:
