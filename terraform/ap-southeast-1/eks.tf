@@ -1,6 +1,6 @@
 module "eks" {
   source  = "app.terraform.io/tnx-journey-to-cloud/eks/aws"
-  version = "1.0.2"
+  version = "1.0.3"
 
   name        = var.eks.name
   prefix      = local.app_env_prefix
