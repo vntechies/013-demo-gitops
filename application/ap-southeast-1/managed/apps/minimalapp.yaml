@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: guestbook
 spec:
-  project: kind-hung-cluster-local
+  project: cloud-day-demo
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
