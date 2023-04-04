@@ -77,7 +77,7 @@ variable "eks" {
     vpc_name    = "demo-vpc"
     cluster_version = "1.25"
 
-    create_aws_auth_configmap = false
+    create_aws_auth_configmap = true
     manage_aws_auth_configmap = true
     irsa_enabled              = true
     irsa = {
