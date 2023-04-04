@@ -1,5 +1,5 @@
 terraform {
-  experiments = [module_variable_optional_attrs]
+  # experiments = [module_variable_optional_attrs] // This only use when TF version under 1.3.0
 
   required_version = ">= 1.2.0"
   required_providers {
