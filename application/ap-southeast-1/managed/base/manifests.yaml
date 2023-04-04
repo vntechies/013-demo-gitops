@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-cloud-day-demo-manifests
+spec:
+  project: aws-cloud-day-demo
+  destination:
+    name: aws-cloud-day-demo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    repoURL: git@github.com:tnx-journey-to-cloud/demo-aws-clouday-vn.git
+    targetRevision: HEAD
+    path: application/ap-southeast-1/manifests
+    directory:
+      recurse: true

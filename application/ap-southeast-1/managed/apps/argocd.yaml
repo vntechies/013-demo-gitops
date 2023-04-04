@@ -1,0 +1,41 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: argocd
+
+#   # To avoid getting ourselves a bit stuck,
+#   # DO NOT auto sync ArgoCD.
+#   # We should confirm the app diff is correct before syncing
+#   syncPolicy: {}
+#   project: default
+#   source:
+#     repoURL: https://argoproj.github.io/argo-helm
+#     chart: argo-cd
+#     targetRevision: 5.13.0
+#     helm:
+#       values: |
+#         ## Application controller
+#         controller:
+#           replicas: 1
+
+#           # podAnnotations:
+#           #   linkerd.io/inject: enabled
+
+#         dex:
+#           # podAnnotations:
+#           #   linkerd.io/inject: enabled
+
+#         server:
+#           replicas: 1
+#           # podAnnotations:
+#           #   linkerd.io/inject: enabled
+
+#         ## Repo Server
+#         repoServer:
+#           replicas: 2
+#           # podAnnotations:
+#           #   linkerd.io/inject: enabled

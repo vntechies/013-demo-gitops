@@ -1,0 +1,20 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: trunk-ea-linkerd-crds
+# spec:
+#   project: kind-hung-cluster-local
+#   destination:
+#     name: kind-hung-cluster-local
+#     namespace: linkerd
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#   source:
+#     repoURL: https://helm.linkerd.io/stable
+#     chart: linkerd-crds
+#     targetRevision: 1.4.0
+#     helm:
+#       version: v3
+#       values: |

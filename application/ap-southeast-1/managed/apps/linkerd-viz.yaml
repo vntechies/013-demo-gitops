@@ -1,0 +1,92 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: linkerd-viz
+# spec:
+#   project: kind-hung-cluster-local
+#   destination:
+#     name: kind-hung-cluster-local
+#     namespace: linkerd
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#   source:
+#     repoURL: https://helm.linkerd.io/stable
+#     chart: linkerd-viz
+#     targetRevision: 2.11.4
+#     helm:
+#       version: v3
+#       values: |
+#         identityTrustAnchorsPEM: &identityTrustAnchorsPEM |
+#           -----BEGIN CERTIFICATE-----
+#           MIIB3jCCAYWgAwIBAgIRAMxEjKcTPS44ERLCQv9m8bEwCgYIKoZIzj0EAwIwKTEn
+#           MCUGA1UEAxMeaWRlbnRpdHkubGlua2VyZC5jbHVzdGVyLmxvY2FsMB4XDTIyMDUz
+#           MDA5MjMwNloXDTMyMDUyNzA5MjMwNlowKTEnMCUGA1UEAxMeaWRlbnRpdHkubGlu
+#           a2VyZC5jbHVzdGVyLmxvY2FsMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEk0eF
+#           /udC2dlvBIxxaVNEtVMUAX8mNehLno1sE729p4B2gVr4C0tNvBY6mRkKZDI6gXP/
+#           ULjrco3p+SF1fJQAR6OBjTCBijAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0lBBYwFAYI
+#           KwYBBQUHAwEGCCsGAQUFBwMCMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFPmR
+#           5/s4Jm6cj8fU8e6aA9gLcXkEMCkGA1UdEQQiMCCCHmlkZW50aXR5LmxpbmtlcmQu
+#           Y2x1c3Rlci5sb2NhbDAKBggqhkjOPQQDAgNHADBEAiAUHvCqtuMqD+8ErFN8qnlP
+#           h8/Ug7eBANHIZyI8hqa25AIgHTuWB1gC2LDy7qmRIlqVSGLLGOTv4NuHcfHcD4Nb
+#           NGE=
+#           -----END CERTIFICATE-----
+
+#         namespace: linkerd
+#         installNamespace: false
+#         enablePodAntiAffinity: true
+
+#         resources: &ha_resources
+#           cpu: &ha_resources_cpu
+#             limit: 50m
+#             request: 50m
+#           memory:
+#             limit: 250Mi
+#             request: 50Mi
+
+#         # tap configuration
+#         tap:
+#           replicas: 1
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#           resources: *ha_resources
+
+#         # tap injector configuration
+#         tapInjector:
+#           replicas: 1
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#           resources: *ha_resources
+
+#         # metrics-api configuration
+#         metricsAPI:
+#           replicas: 1
+#           externalSecret: true
+#           caBundle: *identityTrustAnchorsPEM
+#           resources: *ha_resources
+
+#         # web configuration
+#         dashboard:
+#           replicas: 1
+#           resources: *ha_resources
+
+#         # grafana configuration
+#         # grafana:
+#         #   resources:
+#         #     cpu: *ha_resources_cpu
+#         #     memory:
+#         #       limit: 1024Mi
+#         #       request: 50Mi
+
+#         # prometheus configuration
+#         # prometheus:
+#         #   resources:
+#         #     cpu:
+#         #       limit: ""
+#         #       request: 300m
+#         #     memory:
+#         #       limit: 8192Mi
+#         #       request: 300Mi

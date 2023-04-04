@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: CLOUD-DAY-DEMO-PROJECT
+  namespace: argocd
+spec:
+  description: CLOUD-DAY-DEMO-PROJECT
+  sourceRepos:
+    - "*"
+
+  destinations:
+    - name: CLOUD-DAY-DEMO-PROJECT
+      server: https://kubernetes.default.svc
+      namespace: "*"
+
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+
+  namespaceResourceBlacklist: []

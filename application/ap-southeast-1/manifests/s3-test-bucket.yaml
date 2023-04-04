@@ -1,0 +1,17 @@
+# apiVersion: s3.aws.crossplane.io/v1beta1
+# kind: Bucket
+# metadata:
+#   name: hung-test-bucket-20221021
+#   namespace: default
+# spec:
+#   providerConfigRef:
+#     name: aws-provider
+#   forProvider:
+#     locationConstraint: ap-southeast-1
+#     acl: private
+#     tagging:
+#       tagSet:
+#         - key: hungran
+#           value: cloud
+#         - key: email
+#           value: me@hungran.cloud

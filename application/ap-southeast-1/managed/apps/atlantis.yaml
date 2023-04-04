@@ -1,0 +1,58 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: atlantis
+# spec:
+#   project: kind-hung-cluster-local
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: atlantis
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#   source:
+#     repoURL: https://runatlantis.github.io/helm-charts
+#     chart: atlantis
+#     targetRevision: 4.1.0
+#     helm:
+#       values: |
+#         test:
+#           enabled: false
+
+#         config: |
+#           hide-prev-plan-comments: true
+
+#         ingress:
+#           enabled: false
+
+#         orgAllowlist: github.com/hiimtung/aws14-vti-training,bitbucket.org/haintkit/aws-saa
+#         logLevel: "debug"
+#         # bitbucket:
+#         #   user: hungran
+#         #   token: nLdwZXHDFdBaMrPHEsT4
+#         # environmentSecrets:
+#         #   # - name: ATLANTIS_BITBUCKET_USER
+#         #   #   secretKeyRef:
+#         #   #     name: atlantis
+#         #   #     key: bitbucket-user
+#         #   - name: ATLANTIS_BITBUCKET_TOKEN
+#         #     secretKeyRef:
+#         #       name: atlantis
+#         #       key: bitbucket-token
+#         # repoConfig: |
+#         #   ---
+#         #   repos:
+#         #   - id: /.*/
+#         #     apply_requirements: [approved, mergeable]
+#         #     allow_custom_workflows: false
+
+#         resources:
+#           requests:
+#             memory: 1Gi
+#             cpu: 500m
+#           limits:
+#             memory: 1Gi
+#             cpu: 2000m
