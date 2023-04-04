@@ -94,7 +94,7 @@ variable "eks" {
         resolve_conflicts         = "OVERWRITE"
       }
       cni = {
-        name                      = "cni"
+        name                      = "vpc-cni"
         version                   = "v1.12.5-eksbuild.2"
         resolve_conflicts         = "OVERWRITE"
       }
