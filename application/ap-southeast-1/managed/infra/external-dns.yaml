@@ -23,7 +23,7 @@ spec:
 
         provider: cloudflare
         cloudflare:
-          secretName: cloudflare
+          secretName: cloudflare-secret
           email: vmhung290791@gmail.com
           proxied: false
 
