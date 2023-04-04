@@ -10,7 +10,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "adam-nguyen-20231402"
+    bucket = "atlantis-2023"
     key    = "hungran/terraform.tfstate"
     region = "ap-southeast-1"
   }
