@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: CLOUD-DAY-DEMO-PROJECT
+  name: cloud-day-demo
   namespace: argocd
 spec:
-  description: CLOUD-DAY-DEMO-PROJECT
+  description: cloud-day-demo
   sourceRepos:
     - "*"
 
   destinations:
-    - name: CLOUD-DAY-DEMO-PROJECT
+    - name: cloud-day-demo
       server: https://kubernetes.default.svc
       namespace: "*"
 
