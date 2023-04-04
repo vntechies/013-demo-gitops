@@ -1,9 +1,9 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kind-hung-cluster-ingress-public
+  name: ingress
 spec:
-  project: kind-hung-cluster-local
+  project: cloud-day-demo
   destination:
     namespace: ingress
     server: https://kubernetes.default.svc

@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kind-hung-cluster-cert-manager
+  name: cert-manager
 spec:
-  project: kind-hung-cluster-local
+  project: cloud-day-demo
   destination:
-    name: kind-hung-cluster-local
+    name: cloud-day-demo
     namespace: ingress
   syncPolicy:
     automated:

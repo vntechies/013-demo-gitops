@@ -1,25 +1,25 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: kind-hung-cluster-crossplane
-spec:
-  project: kind-hung-cluster-local
-  destination:
-    name: kind-hung-cluster-local
-    namespace: crossplane
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-  source:
-    repoURL: https://charts.crossplane.io/stable
-    chart: crossplane
-    targetRevision: 1.10.0
-    helm:
-      version: v3
-      values: |
-        replicas: 2
-        metrics:
-          enabled: true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: kind-hung-cluster-crossplane
+# spec:
+#   project: kind-hung-cluster-local
+#   destination:
+#     name: kind-hung-cluster-local
+#     namespace: crossplane
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
+#   source:
+#     repoURL: https://charts.crossplane.io/stable
+#     chart: crossplane
+#     targetRevision: 1.10.0
+#     helm:
+#       version: v3
+#       values: |
+#         replicas: 2
+#         metrics:
+#           enabled: true
