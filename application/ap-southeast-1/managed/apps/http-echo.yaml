@@ -29,5 +29,5 @@ spec:
               hosts:
                 - http-echo.hungran.cloud
           hosts:
-            host: http-echo.hungran.cloud
-            path: "/"
+            - host: http-echo.hungran.cloud
+              path: "/"
