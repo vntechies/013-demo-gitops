@@ -30,3 +30,5 @@ spec:
                 - http-echo.hungran.cloud
           hosts:
             - host: http-echo.hungran.cloud
+              paths:
+              - /
