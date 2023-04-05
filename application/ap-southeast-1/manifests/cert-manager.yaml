@@ -30,8 +30,8 @@ spec:
           cloudflare:
             email: vmhung290791@gmail.com
             apiKeySecretRef:
-              name: cloudflare-api-key-secret
-              key: api-key
+              name: cloudflare-api-token-secret
+              key: api-token
 #       - http01:
 #           ingress:
 #             class:  nginx
