@@ -32,7 +32,7 @@ spec:
           pullPolicy: IfNotPresent
           # Overrides the image tag whose default is the chart appVersion.
           # tag: "0.2.3"
-        arguments: ['--text', 'hello']
+        arguments: ['--text', 'hello from VietAWS - Demo AWS CloudDay']
 
         # This is a simple echo service so we always harden.
         securityContext:
