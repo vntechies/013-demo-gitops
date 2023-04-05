@@ -19,18 +19,72 @@ spec:
     targetRevision: 0.5.0
     helm: 
       values: |
-        fullnameOverride: "http-echo-aws-cloud-demo-day"
-        replicaCount: 2
+        ---
+        #
+        # IMPORTANT NOTE
+        #
+        # This chart inherits from the k8s-at-home common library chart. You can check
+        # the default values/options here:
+        #   https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+        #
+
+        image:
+          repository: hashicorp/http-echo
+          pullPolicy: IfNotPresent
+          # Overrides the image tag whose default is the chart appVersion.
+          # tag: "0.2.3"
+
+        # text to send in reply to an HTTP GET
+        text: "HELLO FROM VIETAWS"
+
+        # This is a simple echo service so we always harden.
+        securityContext:
+          capabilities:
+            drop:
+              - ALL
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+
+        # -- environment variables. See [application docs](https://docs.miguelndecarvalho.pt/projects/speedtest-exporter/) for more details.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+
+        # -- Configures service settings for the chart.
+        # @default -- See values.yaml
+        service:
+          main:
+            nameOverride: http-echo
+            ports:
+              http:
+                port: 5678
+
         ingress:
-          enabled: true
-          ingressClassName: nginx
-          tls:
-            - secretName: http-echo-tls
-              hosts:
-                - http-echo.hungran.cloud
+          # -- Enable and configure ingress settings for the chart under this key.
+          # @default -- See values.yaml
+          main:
+            enabled: true
+
+          ## Configure the hosts for the ingress
           hosts:
-            - host: http-echo.hungran.cloud
+            -  # -- Host address. Helm template can be passed.
+              host: http-echo.hungran.cloud
+              ## Configure the paths for the host
               paths:
-              - /
-          annotations:
-            kubernetes.io/ingress.class: nginx
+                -  # -- Path.  Helm template can be passed.
+                  path: /
+                  # -- Ignored if not kubeVersion >= 1.14-0
+                  pathType: Prefix
+                  service:
+                    # -- Overrides the service name reference for this path
+                    name: http-echo
+                    # -- Overrides the service port reference for this path
+                    port: 5678
+
+          # -- Configure TLS for the ingress. Both secretName and hosts can process a Helm template.
+          tls: 
+           - secretName: http-echo-tls
+             hosts:
+               - http-echo.hungran.cloud
