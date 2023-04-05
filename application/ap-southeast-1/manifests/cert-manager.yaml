@@ -21,7 +21,7 @@ metadata:
 spec:
   acme:
     preferredChain: "ISRG Root X1"
-    email: admin-group@playstudios.asia
+    email: vmhung290791@gmail.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt
