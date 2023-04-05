@@ -14,8 +14,8 @@ spec:
     syncOptions:
       - CreateNamespace=true
   source:
-    repoURL: https://github.com/hungran/http-echo-helm-chart.git
-    chart: http-echo
+    repoURL: https://github.com/playstudios/jarvis-microservice.git
+    path: charts
     targetRevision: 0.1.1
     helm: 
       values: |
