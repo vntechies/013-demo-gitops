@@ -29,7 +29,7 @@ spec:
       - dns01:
           cloudflare:
             email: vmhung290791@gmail.com
-            apiKeySecretRef:
+            apiTokenSecretRef:
               name: cloudflare-api-token-secret
               key: api-token
 #       - http01:
