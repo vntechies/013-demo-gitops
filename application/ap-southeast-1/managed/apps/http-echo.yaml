@@ -15,7 +15,7 @@ spec:
       - CreateNamespace=true
   source:
     repoURL: https://github.com/playstudios/jarvis-microservice.git
-    path: charts
+    path: charts/http-echo
     targetRevision: 0.1.1
     helm: 
       values: |
