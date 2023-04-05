@@ -29,7 +29,7 @@ spec:
       - selector:
           dnsZones:
             - "hungran.cloud"
-      - dns01:
+        dns01:
           cloudflare:
             email: vmhung290791@gmail.com
             apiKeySecretRef:
