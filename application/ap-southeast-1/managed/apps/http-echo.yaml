@@ -55,7 +55,7 @@ spec:
                 - path: /
                   pathType: ImplementationSpecific
           tls:
-          - secretName: http-echo-tls-secret
+          - secretName: http-echo-hungran-cloud-tls-secret
             hosts:
               - http-echo.hungran.cloud
         autoscaling:
