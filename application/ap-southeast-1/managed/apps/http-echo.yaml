@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+spec:
+  project: cloud-day-demo
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  source:
+    repoURL: https://ealenn.github.io/charts
+    chart: ealenn
+    targetRevision: 0.5.0
+    helm: 
+      values: |
+        fullnameOverride: "http-echo-aws-cloud-demo-day"
+        replicaCount: 2
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          tls: http-echo-tls
+          hosts:
+            host: http-echo.hungran.cloud
+            path: "/"
