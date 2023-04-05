@@ -24,7 +24,8 @@ spec:
         ingress:
           enabled: true
           ingressClassName: nginx
-          tls: http-echo-tls
+          tls: 
+            - http-echo-tls
           hosts:
             host: http-echo.hungran.cloud
             path: "/"
