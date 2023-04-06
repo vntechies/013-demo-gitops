@@ -32,7 +32,7 @@ spec:
           pullPolicy: IfNotPresent
           # Overrides the image tag whose default is the chart appVersion.
           # tag: "0.2.3"
-        arguments: ['--text', 'hello from VietAWS - Demo AWS CloudDay']
+        arguments: ['--text', 'hello from VietAWS - Demo AWS CloudDay - Thank you for listening']
 
         # This is a simple echo service so we always harden.
         securityContext:
@@ -61,7 +61,7 @@ spec:
                 - http-echo.hungran.cloud
         autoscaling:
           enabled: false
-          minReplicas: 2
-          maxReplicas: 3
+          minReplicas: 4
+          maxReplicas: 10
           targetCPUUtilizationPercentage: 80
 
