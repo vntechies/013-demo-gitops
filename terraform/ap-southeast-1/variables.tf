@@ -69,9 +69,9 @@ variable "eks" {
     name = "demo-eks"
     node_groups = {
       "workers-1-23" = {
-        desired_size   = 2
+        desired_size   = 3
         max_size       = 5
-        min_size       = 2
+        min_size       = 3
         instance_types = ["t3a.medium"]
         version        = "1.25"
         capacity_type  = "SPOT"
