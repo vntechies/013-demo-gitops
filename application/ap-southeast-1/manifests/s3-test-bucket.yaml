@@ -19,7 +19,7 @@
 apiVersion: s3.aws.upbound.io/v1beta1
 kind: Bucket
 metadata:
-  generateName: hungran-bucket-
+  name: hung-test-bucket-20230408
 spec:
   forProvider:
     region: ap-southeast-1
