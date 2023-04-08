@@ -69,6 +69,7 @@ spec:
             tls: hungran.cloud-admin-tls-secret
             hostname: admin.kong.hungran.cloud
             annotations:
+              # kubernetes.io/tls-acme: "true"
               kubernetes.io/ingress.class: "kong"
             path: /
 
@@ -148,7 +149,9 @@ spec:
             enabled: true
             tls: hungran-manager-tls-secret
             hostname: manager.kong.hungran.cloud
-            annotations: {}
+            annotations: 
+              # kubernetes.io/tls-acme: "true"
+              # kubernetes.io/ingress.class: "kong"
             path: /
 
           externalIPs: []
@@ -178,6 +181,7 @@ spec:
             hostname: portal.kong.hungran.cloud
             annotations:
               kubernetes.io/ingress.class: "kong"
+              # kubernetes.io/tls-acme: "true"
             path: /
 
           externalIPs: []
@@ -207,6 +211,7 @@ spec:
             hostname: portalapi.kong.hungran.cloud
             annotations:
               kubernetes.io/ingress.class: "kong"
+              # kubernetes.io/tls-acme: "true"
             path: /
 
           externalIPs: []
