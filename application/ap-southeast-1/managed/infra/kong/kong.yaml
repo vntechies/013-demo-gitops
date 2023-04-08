@@ -108,7 +108,7 @@ spec:
           portal:
             enabled: true
           rbac:
-            enabled: true
+            enabled: false
             admin_gui_auth: basic-auth
             session_conf_secret: kong-session-config
             admin_gui_auth_conf_secret: hungran-admin-gui-auth-conf-secret
