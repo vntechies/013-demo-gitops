@@ -31,6 +31,13 @@ spec:
         #   instances with authentication must create cookies that are sent to both
         #   the Portal and Portal API.
 
+        # Enable/disable migration jobs, and set annotations for them
+        migrations:
+          # Enable pre-upgrade migrations (run "kong migrations up")
+          preUpgrade: false
+          # Enable post-upgrade migrations (run "kong migrations finish")
+          postUpgrade: false
+
         # image:
         #   repository: kong/kong-gateway
         #   tag: "3.2"
@@ -218,3 +225,4 @@ spec:
                 secretKeyRef:
                   name: kong-enterprise-superuser-password 
                   key: password
+        
