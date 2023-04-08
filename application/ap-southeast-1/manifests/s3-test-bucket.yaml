@@ -15,3 +15,21 @@
 #           value: cloud
 #         - key: email
 #           value: me@hungran.cloud
+
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  generateName: hungran-bucket-
+spec:
+  forProvider:
+    region: ap-southeast-1
+    # locationConstraint: ap-southeast-1
+    acl: private
+    tagging:
+      tagSet:
+        - key: hungran
+          value: cloud
+        - key: email
+          value: me@hungran.cloud
+  providerConfigRef:
+    name: aws-provider
