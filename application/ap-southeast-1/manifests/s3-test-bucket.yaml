@@ -24,12 +24,12 @@ spec:
   forProvider:
     region: ap-southeast-1
     # locationConstraint: ap-southeast-1
-    acl: private
-    tagging:
-      tagSet:
-        - key: hungran
-          value: cloud
-        - key: email
-          value: me@hungran.cloud
+    # acl: private
+    # tagging:
+    #   tagSet:
+    #     - key: hungran
+    #       value: cloud
+    #     - key: email
+    #       value: me@hungran.cloud
   providerConfigRef:
     name: aws-provider
