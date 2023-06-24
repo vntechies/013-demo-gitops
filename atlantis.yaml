@@ -1,6 +1,6 @@
 version: 3
 projects:
-  - name: demo-aws-cloudday-vn
+  - name: vntechies-gitops
     dir: terraform/ap-southeast-1
     autoplan:
       when_modified:
