@@ -64,6 +64,7 @@ variable "vpc" {
   }
 }
 
+
 # variable "eks" {
 #   default = {
 #     name = "demo-eks"
