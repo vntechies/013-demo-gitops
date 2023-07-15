@@ -58,6 +58,15 @@ variable "vpc" {
             "group"          = "public_subnet"
             "kubernetes.io/role/elb" = "1"
           }
+        public_subnet4 = {
+          route_table_name = "public_rtb"
+          cidr             = "10.0.4.0/24"
+          az               = "ap-southeast-1c"
+          subnet_tags = {
+            "public_subnet3" = "ap-southeast-1c"
+            "group"          = "public_subnet"
+            "kubernetes.io/role/elb" = "1"
+          }
         }
       }
     }
