@@ -49,7 +49,6 @@ variable "vpc" {
             "kubernetes.io/role/elb" = "1"
           }
         },
-
         public_subnet3 = {
           route_table_name = "public_rtb"
           cidr             = "10.0.3.0/24"
@@ -66,43 +65,43 @@ variable "vpc" {
 }
 
 
-# variable "eks" {
-#   default = {
-#     name = "demo-eks"
-#     node_groups = {
-#       "workers-1-23" = {
-#         desired_size   = 3
-#         max_size       = 5
-#         min_size       = 3
-#         instance_types = ["t3a.medium"]
-#         version        = "1.25"
-#         capacity_type  = "SPOT"
-#       }
-#     }
-#     vpc_name    = "demo-vpc"
-#     cluster_version = "1.25"
+variable "eks" {
+  default = {
+    name = "demo-eks"
+    node_groups = {
+      "workers-1-23" = {
+        desired_size   = 3
+        max_size       = 5
+        min_size       = 3
+        instance_types = ["t3a.medium"]
+        version        = "1.25"
+        capacity_type  = "SPOT"
+      }
+    }
+    vpc_name    = "demo-vpc"
+    cluster_version = "1.25"
 
-#     create_aws_auth_configmap = false
-#     manage_aws_auth_configmap = true
-#     irsa_enabled              = true
-#     irsa = {
-#       aws-ebs-csi-driver = {
-#         name                     = "aws-ebs-csi-driver"
-#         kubernetes_service_account = "ebscsi-controller-sa"
-#         kubernetes_namespace       = "kube-system"
-#       }
-#     }
-#     cluster_addons = {
-#       aws-ebs-csi-driver = {
-#         name                      = "aws-ebs-csi-driver"
-#         version                   = "v1.17.0-eksbuild.1"
-#         resolve_conflicts         = "OVERWRITE"
-#       }
-#       cni = {
-#         name                      = "vpc-cni"
-#         version                   = "v1.12.5-eksbuild.2"
-#         resolve_conflicts         = "OVERWRITE"
-#       }
-#     }
-#   }
-# }
+    create_aws_auth_configmap = false
+    manage_aws_auth_configmap = true
+    irsa_enabled              = true
+    irsa = {
+      aws-ebs-csi-driver = {
+        name                     = "aws-ebs-csi-driver"
+        kubernetes_service_account = "ebscsi-controller-sa"
+        kubernetes_namespace       = "kube-system"
+      }
+    }
+    cluster_addons = {
+      aws-ebs-csi-driver = {
+        name                      = "aws-ebs-csi-driver"
+        version                   = "v1.17.0-eksbuild.1"
+        resolve_conflicts         = "OVERWRITE"
+      }
+      cni = {
+        name                      = "vpc-cni"
+        version                   = "v1.12.5-eksbuild.2"
+        resolve_conflicts         = "OVERWRITE"
+      }
+    }
+  }
+}
