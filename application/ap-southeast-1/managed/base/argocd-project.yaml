@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: cloud-day-demo
+  name: vntechies
   namespace: argocd
 spec:
-  description: cloud-day-demo
+  description: vntechies
   sourceRepos:
     - "*"
 
   destinations:
-    - name: cloud-day-demo
-      server: https://kubernetes.default.svc
+    - name: vntechies
+      server: https://1470FBE09E07236EE4CF9E9295AE3126.gr7.ap-southeast-1.eks.amazonaws.com
       namespace: "*"
 
   clusterResourceWhitelist:
