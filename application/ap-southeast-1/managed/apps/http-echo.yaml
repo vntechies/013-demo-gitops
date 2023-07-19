@@ -16,7 +16,7 @@ spec:
   source:
     repoURL: https://github.com/hungran/http-echo-helm-chart.git
     path: charts/http-echo
-    targetRevision: "http-echo-0.1.2"
+    targetRevision: "http-echo-0.1.3"
     helm: 
       values: |
         #
