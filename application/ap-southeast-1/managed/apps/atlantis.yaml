@@ -5,7 +5,7 @@
 # spec:
 #   project: kind-hung-cluster-local
 #   destination:
-#     server: https://kubernetes.default.svc
+#     server: https://1470FBE09E07236EE4CF9E9295AE3126.gr7.ap-southeast-1.eks.amazonaws.com
 #     namespace: atlantis
 #   syncPolicy:
 #     automated:

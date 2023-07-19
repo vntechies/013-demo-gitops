@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cloud-day-demo-manifests
+  name: vntechies-manifests
 spec:
-  project: cloud-day-demo
+  project: vntechies
   destination:
-    server: https://kubernetes.default.svc
+    server: https://1470FBE09E07236EE4CF9E9295AE3126.gr7.ap-southeast-1.eks.amazonaws.com
   syncPolicy:
     automated:
       prune: true

@@ -3,10 +3,10 @@ kind: Application
 metadata:
   name: ingress-public
 spec:
-  project: cloud-day-demo
+  project: vntechies
   destination:
     namespace: ingress
-    server: https://kubernetes.default.svc
+    server: https://1470FBE09E07236EE4CF9E9295AE3126.gr7.ap-southeast-1.eks.amazonaws.com
   syncPolicy:
     automated:
       prune: true

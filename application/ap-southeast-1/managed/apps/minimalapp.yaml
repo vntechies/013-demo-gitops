@@ -3,13 +3,13 @@ kind: Application
 metadata:
   name: guestbook
 spec:
-  project: cloud-day-demo
+  project: vntechies
   source:
     repoURL: https://github.com/argoproj/argocd-example-apps.git
     targetRevision: HEAD
     path: guestbook
   destination:
-    server: https://kubernetes.default.svc
+    server: https://1470FBE09E07236EE4CF9E9295AE3126.gr7.ap-southeast-1.eks.amazonaws.com
     namespace: guestbook
   syncPolicy:
     automated:
