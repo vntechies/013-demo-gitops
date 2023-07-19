@@ -1,3 +1,8 @@
 # demo-public
 
-[img](./diagram.png)
+## IaC GitOps
+![Infra](./diagram.png)
+
+
+## Application GitOps
+![app](./app.png)
