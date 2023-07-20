@@ -28,7 +28,7 @@ spec:
         #
 
         image:
-          repository: hashicorp/http-echo
+          repository: hungran91/cowsay
           pullPolicy: IfNotPresent
           # Overrides the image tag whose default is the chart appVersion.
           # tag: "0.2.3"
