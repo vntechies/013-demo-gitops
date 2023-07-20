@@ -60,7 +60,7 @@ spec:
                 - http-echo.hungran.cloud
         autoscaling:
           enabled: true
-          minReplicas: 2
+          minReplicas: 4
           maxReplicas: 6
           targetCPUUtilizationPercentage: 80
 
