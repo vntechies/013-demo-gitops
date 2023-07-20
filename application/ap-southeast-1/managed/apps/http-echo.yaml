@@ -33,7 +33,7 @@ spec:
           # Overrides the image tag whose default is the chart appVersion.
           tag: "latest"
         # arguments: ['--text', 'hello from VietAWS - Demo AWS CloudDay - Thank you for listening']
-          arguments: []
+          arguments: ['']
         # This is a simple echo service so we always harden.
         securityContext:
           capabilities:
