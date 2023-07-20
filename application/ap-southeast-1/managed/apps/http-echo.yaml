@@ -28,12 +28,11 @@ spec:
         #
 
         image:
-          repository: hungran91/cowsay
+          repository: hashicorp/http-echo
           pullPolicy: IfNotPresent
           # Overrides the image tag whose default is the chart appVersion.
-          tag: "latest"
-        # arguments: ['--text', 'hello from VietAWS - Demo AWS CloudDay - Thank you for listening']
-          arguments: ['']
+          tag: "0.2.3"
+        arguments: ['--text', 'Xin chao VNTECHIES']
         # This is a simple echo service so we always harden.
         securityContext:
           capabilities:
