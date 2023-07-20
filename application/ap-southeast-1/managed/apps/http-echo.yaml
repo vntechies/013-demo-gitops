@@ -16,7 +16,7 @@ spec:
   source:
     repoURL: https://github.com/hungran/http-echo-helm-chart.git
     path: charts/http-echo
-    targetRevision: "http-echo-0.1.1"
+    targetRevision: "http-echo-0.1.7"
     helm: 
       values: |
         #
@@ -61,7 +61,7 @@ spec:
                 - http-echo.hungran.cloud
         autoscaling:
           enabled: true
-          minReplicas: 1
-          maxReplicas: 10
+          minReplicas: 2
+          maxReplicas: 6
           targetCPUUtilizationPercentage: 80
 
