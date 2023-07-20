@@ -62,6 +62,6 @@ spec:
         autoscaling:
           enabled: true
           minReplicas: 2
-          maxReplicas: 10
+          maxReplicas: 6
           targetCPUUtilizationPercentage: 80
 
