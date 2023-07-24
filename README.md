@@ -44,3 +44,6 @@
 │           ├── providerawsconfig.yaml
 │           └── s3-test-bucket.yaml
 ```
+## Sample Application
+
+![sample-application](./sample-application.png)
